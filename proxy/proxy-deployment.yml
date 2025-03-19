@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-proxy
+  namespace: proxy
+  labels:
+    id: "924820"
+    app: proxy
+    env: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      id: "924820"
+      app: proxy
+      env: dev
+  template:
+    metadata:
+      labels:
+        id: "924820"
+        app: proxy
+        env: dev
+    spec:
+      containers:
+        - name: nginx-proxy
+          image: hash16/nginx-proxy:latest
+          ports:
+            - containerPort: 80
